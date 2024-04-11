@@ -27,5 +27,10 @@
         android:exported="false"
         android:label="profile_activity"
         android:theme="@style/Theme.ActiviesAndViews" />
+        <activity
+        android:name=".CartActivity"
+        android:exported="false"
+        android:label="cart_activity"
+        android:theme="@style/Theme.ActiviesAndViews" />
     </application>
 </manifest>
