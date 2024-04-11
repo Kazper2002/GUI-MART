@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--    XML FOR SHOPPING CART VIEW
+        CONTAINS LISTVIEW THAT HOLDS CART ITEMS
+-->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout_Cart"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/Btn_ProceedCheckout"
+        android:layout_width="187dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="32dp"
+        android:text="Proceed to Checkout"
+        app:layout_constraintBottom_toTopOf="@+id/BackgroundBox_NavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/BackgroundBox_NavBar"
+        android:layout_width="411dp"
+        android:layout_height="74dp"
+        android:background="#B8B8B8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/ListView_Cart"
+        android:layout_width="411dp"
+        android:layout_height="548dp"
+        app:layout_constraintBottom_toTopOf="@+id/BackgroundBox_NavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BackgroundBox_CartTitle" />
+
+    <View
+        android:id="@+id/BackgroundBox_CartTitle"
+        android:layout_width="413dp"
+        android:layout_height="107dp"
+        android:background="#B8B8B8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Text_CartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cart"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/ListView_Cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_CartTitle"
+        app:layout_constraintVertical_bias="0.372" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

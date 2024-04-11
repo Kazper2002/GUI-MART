@@ -1,0 +1,10 @@
+Orange,0.59,6
+Apple,1.29,5
+Cereal,3.49,1
+Frozen Pizza,8.75,1
+Peanut Butter,3.25,1
+Hot Dogs,5.50,1
+Potato Chips,2.30,3
+Soda,3.50,3
+Orange Juice,2.50,1
+Milk,2.75,1
