@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/pImage"
+        android:layout_width="344dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pImage" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price" />
+
+    <Button
+        android:id="@+id/subB"
+        android:layout_width="48dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="160dp"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="56dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/subB"
+        app:layout_constraintTop_toTopOf="@+id/subB" />
+
+    <Button
+        android:id="@+id/addB"
+        android:layout_width="48dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:text="+"
+        app:layout_constraintStart_toEndOf="@+id/quantity"
+        app:layout_constraintTop_toTopOf="@+id/quantity" />
+
+    <Button
+        android:id="@+id/cartB"
+        android:layout_width="140dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="52dp"
+        android:text="ADD TO CART"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
