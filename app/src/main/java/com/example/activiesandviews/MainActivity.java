@@ -31,16 +31,14 @@ public class MainActivity extends ComponentActivity {
                 EditText uText = (EditText) findViewById(R.id.inputName);
                 EditText pText = (EditText) findViewById(R.id.inputPassword);
                 if(authenticate(uText.getText().toString(), pText.getText().toString())) {
-                    Intent intent = new Intent(MainActivity.this, CheckoutActivity.class);
+                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                     startActivity(intent);
                 }
                 else {
-                   // uText.setError("Incorrect username and password combination");
-                   // pText.setError("Incorrect username and password combination");
-                   // uText.setText("");
-                   // pText.setText("");
-                    Intent intent = new Intent(MainActivity.this, CartActivity.class); //allow all inputs for testing
-                    startActivity(intent); //allow all inputs for testing
+                    uText.setError("Incorrect username and password combination");
+                    pText.setError("Incorrect username and password combination");
+                    uText.setText("");
+                    pText.setText("");
                 }
             }
         });
