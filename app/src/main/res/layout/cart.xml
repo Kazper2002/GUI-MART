@@ -15,7 +15,7 @@
         android:id="@+id/Btn_ProceedCheckout"
         android:layout_width="187dp"
         android:layout_height="54dp"
-        android:text="Proceed to Checkout"
+        android:text="@string/Button_ProceedCheckout_Text"
         app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_NavBar"
         app:layout_constraintEnd_toEndOf="@+id/BackgroundBox_NavBar"
         app:layout_constraintStart_toStartOf="@+id/BackgroundBox_NavBar"
