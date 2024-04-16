@@ -1,17 +1,19 @@
 package com.example.activiesandviews;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity; // Correct import for AppCompatActivity
-import androidx.appcompat.widget.SearchView; // Correct import for SearchView
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.activity.ComponentActivity; // Add this import for ComponentActivity
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity { // Extend AppCompatActivity
+public class SearchActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
@@ -30,6 +32,17 @@ public class SearchActivity extends AppCompatActivity { // Extend AppCompatActiv
         recyclerView.setAdapter(adapter);
 
         setupSearchView();
+
+        // Initialize cart button and set click listener
+        Button cartButton = findViewById(R.id.cart_button);
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the CartActivity when the cart button is clicked
+                Intent intent = new Intent(SearchActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setupSearchView() {
