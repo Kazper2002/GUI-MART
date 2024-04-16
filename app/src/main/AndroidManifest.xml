@@ -32,5 +32,15 @@
         android:exported="false"
         android:label="cart_activity"
         android:theme="@style/Theme.ActiviesAndViews" />
+        <activity
+            android:name=".productActivity"
+            android:exported="false"
+            android:label="product_activity"
+            android:theme="@style/Theme.ActiviesAndViews" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false"
+            android:label="checkout_activity"
+            android:theme="@style/Theme.ActiviesAndViews" />
     </application>
 </manifest>

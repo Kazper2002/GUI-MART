@@ -10,24 +10,21 @@
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="61dp"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="230dp"
-        android:text="@string/username"
+        android:text="Create Username:"
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/inputName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:text="Create Username:"
         tools:visibility="visible" />
 
     <EditText
         android:id="@+id/inputName"
         android:layout_width="289dp"
         android:layout_height="45dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginEnd="61dp"
         android:layout_marginBottom="11dp"
         android:ems="10"
         android:inputType="text"
@@ -41,21 +38,19 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="233dp"
-        android:text="@string/password"
+        android:text="Create Password:"
         android:textColor="#000000"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/inputPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/inputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/inputName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputName"
+        tools:text="Create Password:" />
 
     <EditText
         android:id="@+id/inputPassword"
         android:layout_width="289dp"
         android:layout_height="45dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginEnd="61dp"
         android:layout_marginBottom="22dp"
         android:ems="10"
         android:inputType="text"
@@ -67,24 +62,21 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="83dp"
+        android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:layout_marginStart="164dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="164dp"
         android:layout_marginBottom="119dp"
-        android:text="@string/login"
+        android:text="SIGN UP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword"
+        tools:text="SIGN UP" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="259dp"
         android:layout_height="287dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginEnd="76dp"
         android:src="@drawable/utsa_png"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
