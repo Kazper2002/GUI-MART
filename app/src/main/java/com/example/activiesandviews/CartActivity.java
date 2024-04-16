@@ -1,11 +1,7 @@
 package com.example.activiesandviews;
-
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.*;
 import androidx.activity.ComponentActivity;
-
 import java.io.*;
 import java.util.*;
 
@@ -13,37 +9,30 @@ import java.util.*;
 
 public class CartActivity extends ComponentActivity {
 
-    private Button button;
-    private AssetManager assets;
+    private ArrayList<Product> productList; // List of all products currently in cart
     @Override
     public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart);
-        assets = getAssets();
+        productList = readCartItems();  // Read cart items into productList
         setupButtons();
         ListView cartListView = findViewById(R.id.ListView_Cart);
-        ArrayList<Product> productList = readCartItems();   // ARRAYLIST OF PRODUCTS CURRENTLY IN CART
         CartAdapter adapter = new CartAdapter(this, productList); // ADAPTER TO RECIEVE PRODUCT ARRAYLIST
         cartListView.setAdapter(adapter);   // SEND ARRAYLIST TO POPULATE LISTVIEW
     }
 
     // CHECKOUT BUTTON - PROCEED TO CHECKOUT
     private void setupButtons() {
-        //button = (Button) findViewById(R.id.Btn_ProceedCheckout);
-        /*
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {                // TODO DO NOT ALLOW TO PROCEED TO CHECKOUT IF CART IS EMPTY
-                if() {      // IF LIST VIEW NOT EMPTY
-                    Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
-                    startActivity(intent);
-                }
-                else {      // CART EMPTY
-                    uText.setError("Cart is empty");
-                }
+        Button button = findViewById(R.id.Btn_ProceedCheckout);  // Button Init
+
+        button.setOnClickListener(view -> {
+            if (!productList.isEmpty()) {
+                //Intent intent = new Intent(CartActivity.this, CheckoutActivity.class); // TODO CONNECT TO CHECKOUT VIEW WHEN IMPLEMENTED
+                //startActivity(intent);
+            } else {
+                Toast.makeText(CartActivity.this, "Cart is empty", Toast.LENGTH_SHORT).show();
             }
         });
-         */
     }
 
     // TODO IMPLEMENT THE REAL PRODUCT DATA WHEN SEARCH IS FINISHED
