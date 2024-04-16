@@ -1,4 +1,3 @@
-/*
 package com.example.activiesandviews;
 import android.os.Bundle;
 import android.view.View;
@@ -96,4 +95,3 @@ public class productActivity  extends ComponentActivity{
         }
     }
 }
-*/
