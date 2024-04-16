@@ -1,13 +1,14 @@
 package com.example.activiesandviews;
+
 public class Item {
     private String name;
     private double price;
-    private String img;
+    private String imageName;
 
-    public Item(String name, double price, String img) {
+    public Item(String name, double price, String imageName) {
         this.name = name;
         this.price = price;
-        this.img = img;
+        this.imageName = imageName;
     }
 
     public String getName() {
@@ -18,19 +19,7 @@ public class Item {
         return price;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public String getImageName() {
+        return imageName;
     }
 }

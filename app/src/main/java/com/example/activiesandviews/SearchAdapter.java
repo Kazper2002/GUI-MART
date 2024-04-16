@@ -2,6 +2,7 @@ package com.example.activiesandviews;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,15 +22,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> implements Filterable {
+    private static final String TAG = "SearchAdapter";
     private List<Item> items;
     private List<Item> itemsFiltered;
     private Context context;
+
+    private RequestOptions requestOptions;
 
     public SearchAdapter(Context context, String filename) {
         this.context = context;
         items = new ArrayList<>();
         itemsFiltered = new ArrayList<>();
         loadData(filename);
+
+        // Initialize RequestOptions
+        requestOptions = new RequestOptions()
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.placeholder);
     }
 
     private void loadData(String filename) {
@@ -43,15 +51,21 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 String[] parts = line.split(",");
                 if (parts.length >= 3) { // Check if there are at least 3 parts
                     String name = parts[0].trim();
-                    String imageUrl = parts[2].trim(); // Image URL is at index 2
-                    double price = Double.parseDouble(parts[4].trim()); // Price is at index 4
-                    items.add(new Item(name, price, imageUrl));
+                    String imageName = parts[2].trim(); // Image name is at index 2
+                    try {
+                        double price = Double.parseDouble(parts[4].trim()); // Price is at index 4
+                        items.add(new Item(name, price, imageName));
+                    } catch (NumberFormatException e) {
+                        Log.e(TAG, "Invalid price format in row: " + line);
+                    }
                 }
             }
             br.close();
             itemsFiltered.addAll(items); // Copy items to filtered list initially
-        } catch (IOException | NumberFormatException e) {
+            Log.d(TAG, "Data loaded successfully. Total items: " + items.size());
+        } catch (IOException e) {
             e.printStackTrace();
+            Log.e(TAG, "Error loading data: " + e.getMessage());
         }
     }
 
@@ -67,19 +81,23 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         Item item = itemsFiltered.get(position);
         holder.nameTextView.setText(item.getName());
         holder.priceTextView.setText(String.valueOf(item.getPrice()));
-        loadImageIntoImageView(item.getImg(), holder.imageView);
+        loadImageIntoImageView(item.getImageName(), holder.imageView);
     }
 
-    private void loadImageIntoImageView(String imageUrl, ImageView imageView) {
-        RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder);
 
-        Glide.with(context)
-                .setDefaultRequestOptions(requestOptions)
-                .load(imageUrl)
-                .into(imageView);
+
+    private void loadImageIntoImageView(String imageName, ImageView imageView) {
+        int imageResource = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+        if (imageResource != 0) {
+            Glide.with(context)
+                    .setDefaultRequestOptions(requestOptions)
+                    .load(imageResource)
+                    .into(imageView);
+        } else {
+            Log.e(TAG, "Image resource not found for item. Image name: " + imageName);
+        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -124,9 +142,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
                 itemsFiltered.clear();
-                itemsFiltered.addAll((List<Item>) results.values); // Update filtered items
-                notifyDataSetChanged(); // Notify adapter about data changes
+                if (results.values instanceof List<?>) {
+                    itemsFiltered.addAll((List<Item>) results.values); // Update filtered items
+                    notifyDataSetChanged(); // Notify adapter about data changes
+                    Log.d(TAG, "Filtered items: " + itemsFiltered.size());
+                } else {
+                    Log.e(TAG, "Filtering results are not of type List<Item>");
+                }
             }
+
         };
     }
 }
