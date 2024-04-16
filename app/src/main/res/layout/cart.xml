@@ -15,11 +15,11 @@
         android:id="@+id/Btn_ProceedCheckout"
         android:layout_width="187dp"
         android:layout_height="54dp"
-        android:layout_marginBottom="32dp"
         android:text="Proceed to Checkout"
-        app:layout_constraintBottom_toTopOf="@+id/BackgroundBox_NavBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_NavBar"
+        app:layout_constraintEnd_toEndOf="@+id/BackgroundBox_NavBar"
+        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_NavBar"
+        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_NavBar" />
 
     <View
         android:id="@+id/BackgroundBox_NavBar"
