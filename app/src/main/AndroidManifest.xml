@@ -36,6 +36,7 @@
             android:name=".SearchActivity"
             android:exported="false"
             android:label="search_activity"
-            android:theme="@style/Theme.ActiviesAndViews" />
+            android:theme="@style/Theme.AppCompat"/>
+
     </application>
 </manifest>

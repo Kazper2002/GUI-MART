@@ -1,15 +1,17 @@
 package com.example.activiesandviews;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity; // Correct import for AppCompatActivity
+import androidx.appcompat.widget.SearchView; // Correct import for SearchView
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.activity.ComponentActivity; // Add this import for ComponentActivity
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity { // Extend AppCompatActivity
 
     private RecyclerView recyclerView;
     private SearchAdapter adapter;

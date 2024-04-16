@@ -72,7 +72,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     private void loadImageIntoImageView(String imageUrl, ImageView imageView) {
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder) 
+                .placeholder(R.drawable.placeholder)
                 .error(R.drawable.placeholder);
 
         Glide.with(context)
