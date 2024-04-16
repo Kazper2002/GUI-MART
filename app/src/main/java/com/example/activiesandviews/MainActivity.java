@@ -31,7 +31,7 @@ public class MainActivity extends ComponentActivity {
                 EditText uText = (EditText) findViewById(R.id.inputName);
                 EditText pText = (EditText) findViewById(R.id.inputPassword);
                 if(authenticate(uText.getText().toString(), pText.getText().toString())) {
-                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(MainActivity.this, SearchActivity.class);
                     startActivity(intent);
                 }
                 else {

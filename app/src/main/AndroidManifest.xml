@@ -32,5 +32,10 @@
         android:exported="false"
         android:label="cart_activity"
         android:theme="@style/Theme.ActiviesAndViews" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false"
+            android:label="search_activity"
+            android:theme="@style/Theme.ActiviesAndViews" />
     </application>
 </manifest>
