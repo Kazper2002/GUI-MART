@@ -5,4 +5,7 @@
     <string name="login">Login\n</string>
     <string name="jsmithemail">j.smith@gmail.com</string>
     <string name="email">Email:</string>
+    <string name="ViewTitle_Cart" />
+    <string name="Button_ProceedCheckout_Text">Proceed to Checkout</string>
+    <string name="ImageButton_Trash_SpeakableText">Remove Item from Cart</string>
 </resources>
