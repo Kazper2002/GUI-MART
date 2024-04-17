@@ -25,7 +25,7 @@
         android:id="@+id/inputName"
         android:layout_width="289dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginBottom="22dp"
         android:ems="10"
         android:inputType="text"
         android:textSize="20sp"
