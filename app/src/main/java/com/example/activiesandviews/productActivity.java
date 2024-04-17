@@ -1,4 +1,5 @@
 package com.example.activiesandviews;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class productActivity  extends ComponentActivity{
-    private Button subB, addB;
+    private Button subB, addB, searchP, checkoutP;
     public ImageView pImage;
     public TextView quantity, product, price, desc;
     public int count =0;
@@ -33,6 +34,8 @@ public class productActivity  extends ComponentActivity{
         addB = findViewById(R.id.addB);
         quantity = findViewById(R.id.quantity);
         desc = findViewById(R.id.description);
+        searchP = findViewById(R.id.searchP);
+        checkoutP = findViewById(R.id.checkoutP);
 
         readFile();
         setupButtons();
@@ -40,23 +43,31 @@ public class productActivity  extends ComponentActivity{
     }
 
     private void setupButtons(){
-        subB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                if (count > 0) {
-                    count--;
-                    updateQuantity();
-                }
-            }
-        });
-        addB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                count++;
-                updateQuantity();
-            }
-        });
+        subB.setOnClickListener(this::onSubButtonClick);
+        addB.setOnClickListener(this::onAddButtonClick);
+        checkoutP.setOnClickListener(this::onCheckoutButtonClick);
+        searchP.setOnClickListener(this::onSearchButtonClick);
     }
+    private void onSubButtonClick(View v) {
+        if (count > 0) {
+            count--;
+            updateQuantity();
+        }
+    }
+    private void onAddButtonClick(View v) {
+        count++;
+        updateQuantity();
+    }
+    private void onCheckoutButtonClick(View v) {
+        Intent intent = new Intent(productActivity.this, Product.class);
+        startActivity(intent);
+    }
+
+    private void onSearchButtonClick(View v) {
+        Intent intent = new Intent(productActivity.this, SearchActivity.class);
+        startActivity(intent);
+    }
+
     private void updateQuantity(){
         quantity.setText(String.valueOf(count));
     }
@@ -95,3 +106,5 @@ public class productActivity  extends ComponentActivity{
         }
     }
 }
+
+

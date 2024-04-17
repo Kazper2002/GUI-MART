@@ -84,5 +84,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quantity" />
 
+    <Button
+        android:id="@+id/checkoutP"
+        android:layout_width="111dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="160dp"
+        android:text="CHECKOUT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity" />
+
+    <Button
+        android:id="@+id/searchP"
+        android:layout_width="111dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="160dp"
+        android:text="SEARCH"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
