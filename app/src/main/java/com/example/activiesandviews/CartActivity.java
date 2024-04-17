@@ -1,6 +1,8 @@
 package com.example.activiesandviews;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.*;
 import androidx.activity.ComponentActivity;
 import java.util.*;
@@ -41,11 +43,22 @@ public class CartActivity extends ComponentActivity {
 
     private void setupButtons() {
         Button button = findViewById(R.id.Btn_ProceedCheckout);
+
+        ImageButton backButton = findViewById(R.id.imageButton_Cart_BackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                onBackPressed();  // Calls the default back button action
+            }
+        });
+
         button.setOnClickListener(view -> {
             if (!productList.isEmpty()) {
                 Toast.makeText(CartActivity.this, "Proceed to checkout", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
+                startActivity(intent);
             } else {
-                Toast.makeText(CartActivity.this, "Cart is empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, "Cannot checkout with an empty cart", Toast.LENGTH_SHORT).show();
             }
         });
     }

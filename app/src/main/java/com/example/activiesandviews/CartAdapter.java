@@ -49,5 +49,4 @@ public class CartAdapter extends ArrayAdapter<Product> {
         // Return the completed view to render on screen
         return convertView;
     }
-
 }
