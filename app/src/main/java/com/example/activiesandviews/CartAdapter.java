@@ -1,5 +1,6 @@
 package com.example.activiesandviews;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,10 @@ public class CartAdapter extends ArrayAdapter<Product> {
         TextView productPrice = convertView.findViewById(R.id.productPrice);
         TextView productQuantity = convertView.findViewById(R.id.productQuantity);
         ImageButton deleteButton = convertView.findViewById(R.id.imageButton_Trash);
+
+        // Set background color based on item position
+        int backgroundColor = (position % 2 == 0) ? Color.parseColor("#FFFFFF") : Color.parseColor("#F0F0F0");
+        convertView.setBackgroundColor(backgroundColor);
 
         // PRODUCT DATA
         Product product = getItem(position);

@@ -27,6 +27,8 @@ public class CartActivity extends ComponentActivity {
             addSampleItem("Spinach", 2.29, 3);
             addSampleItem("Apple", 1.59, 9);
             addSampleItem("Eggs", 7.60, 1);
+            addSampleItem("Bread", 3.20, 1);
+            addSampleItem("Milk", 5.66, 1);
         }
         Log.d("CartActivity", "Cart loaded with " + productList.size() + " items.");
     }
