@@ -13,34 +13,20 @@ public class CartActivity extends ComponentActivity {
 
     private ArrayList<Product> productList;
     private CartAdapter adapter;
+    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart);
-        productList = CartPreferences.loadCart(this);
+        userModel = new UserModel(this);
+        productList = new ArrayList<>();
+        productList.addAll(userModel.getCart()); // Load from UserModel
         setupButtons();
         ListView cartListView = findViewById(R.id.ListView_Cart);
         adapter = new CartAdapter(this, productList);
         cartListView.setAdapter(adapter);
-        if (productList.isEmpty()) {                // SAMPLE CART ITEMS - FOR TESTING
-            addSampleItem("Spinach", 2.29, 3);
-            addSampleItem("Apple", 1.59, 9);
-            addSampleItem("Eggs", 7.60, 1);
-            addSampleItem("Bread", 3.20, 1);
-            addSampleItem("Milk", 5.66, 1);
-        }
         Log.d("CartActivity", "Cart loaded with " + productList.size() + " items.");
-    }
-
-    // FOR TESTING
-    private void addSampleItem(String name, double price, int quantity) {
-        Product sampleProduct = new Product(name, price, quantity);
-        productList.add(sampleProduct);
-        CartPreferences.saveCart(this, productList);
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
     }
 
     private void setupButtons() {
@@ -50,7 +36,8 @@ public class CartActivity extends ComponentActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                onBackPressed();  // Calls the default back button action
+                Intent intent = new Intent(CartActivity.this, SearchActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -6,10 +6,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -18,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PushbackReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +30,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     private List<Item> items;
     private List<Item> itemsFiltered;
     private Context context;
+    private UserModel userModel;
 
     private RequestOptions requestOptions;
 
@@ -34,6 +39,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         items = new ArrayList<>();
         itemsFiltered = new ArrayList<>();
         loadData(filename);
+        userModel = new UserModel(context);
 
         // Initialize RequestOptions
         requestOptions = new RequestOptions()
@@ -82,9 +88,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.nameTextView.setText(item.getName());
         holder.priceTextView.setText(String.valueOf(item.getPrice()));
         loadImageIntoImageView(item.getImageName(), holder.imageView);
+        // add click listener for add to cart button
+        holder.addToCartButton.setOnClickListener(v ->{
+            userModel.addToCart(item.getName(),item.getPrice(),1);
+            Toast.makeText(context, "Item added to cart",Toast.LENGTH_SHORT).show();
+        });
     }
-
-
 
     private void loadImageIntoImageView(String imageName, ImageView imageView) {
         int imageResource = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
@@ -107,12 +116,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     static class SearchViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView, priceTextView;
         ImageView imageView;
+        Button addToCartButton;
 
         SearchViewHolder(@NonNull View itemView) {
             super(itemView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             priceTextView = itemView.findViewById(R.id.priceTextView);
             imageView = itemView.findViewById(R.id.imageView);
+            addToCartButton = itemView.findViewById(R.id.addToCartButton);
         }
     }
 

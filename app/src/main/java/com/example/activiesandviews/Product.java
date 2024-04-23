@@ -24,4 +24,7 @@ public class Product {
     // Setters
     public void setQuantity(int quantity) {this.quantity = quantity;}
     public void resetQuantity(int quantity) {this.quantity = 0;}
+    public void increaseQuantity(int amount) {
+        this.quantity += amount;
+    }
 }

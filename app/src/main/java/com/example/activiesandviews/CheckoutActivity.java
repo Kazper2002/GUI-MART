@@ -13,34 +13,33 @@ public class CheckoutActivity extends ComponentActivity {
 
     private ArrayList<Product> productList;
     private CartAdapter adapter;
+    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.checkout);
-        productList = CartPreferences.loadCart(this);
+        userModel = new UserModel(this);
+        productList = new ArrayList<>();
+        productList.addAll(userModel.getCart()); // Load from UserModel
         setupButtons();
         ListView cartListView = findViewById(R.id.ListView_Cart);
         adapter = new CartAdapter(this, productList);
         cartListView.setAdapter(adapter);
-        if (productList.isEmpty()) {                // SAMPLE CART ITEMS - FOR TESTING
-            addSampleItem("Spinach", 2.29, 3);
-            addSampleItem("Apple", 1.59, 9);
-            addSampleItem("Eggs", 7.60, 1);
-            addSampleItem("Bread", 3.20, 1);
-            addSampleItem("Milk", 5.66, 1);
-        }
-        Log.d("CheckoutActivity", "Cart loaded with " + productList.size() + " items.");
-    }
+        updateTotals();
 
-    // FOR TESTING
-    private void addSampleItem(String name, double price, int quantity) {
-        Product sampleProduct = new Product(name, price, quantity);
-        productList.add(sampleProduct);
-        CartPreferences.saveCart(this, productList);
-        if (adapter != null) {
-            adapter.notifyDataSetChanged();
-        }
+
+        // show total at the bottom
+        double totalAmount = calculateTotalAmount(); // Calculate the total amount
+        TextView totalTextView = findViewById(R.id.Text_Subtotal);
+        totalTextView.setText(String.format("Total: $%.2f", totalAmount));
+
+        // Calculate and display item count
+        int itemCount = calculateItemCount();
+        TextView itemCountTextView = findViewById(R.id.Text_ItemCount);
+        itemCountTextView.setText(String.format("Item Count: %d", itemCount));
+
+        Log.d("CheckoutActivity", "Cart loaded with " + productList.size() + " items.");
     }
 
     private void setupButtons() {
@@ -48,15 +47,16 @@ public class CheckoutActivity extends ComponentActivity {
 
         ImageButton backButton = findViewById(R.id.imageButton_Cart_BackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View v) {
-                onBackPressed();  // Calls the default back button action
+                Intent intent = new Intent(CheckoutActivity.this, CartActivity.class);
+                startActivity(intent);
             }
         });
 
         button.setOnClickListener(view -> {
             if (!productList.isEmpty()) {
                 Toast.makeText(CheckoutActivity.this, "Order has been placed", Toast.LENGTH_SHORT).show();
+                userModel.clearCart();
                 Intent intent = new Intent(CheckoutActivity.this, SearchActivity.class);
                 startActivity(intent);
             } else {
@@ -69,5 +69,39 @@ public class CheckoutActivity extends ComponentActivity {
     protected void onPause() {
         super.onPause();
         CartPreferences.saveCart(this, productList);  // Save cart items to SharedPreferences when app is paused
+    }
+    private double calculateTotalAmount() {
+        double total = 0.0;
+        for (Product product : productList) {
+            total += product.getPrice() * product.getQuantity();
+        }
+        return total;
+    }
+    private int calculateItemCount() {
+        int count = 0;
+        for (Product product : productList) {
+            count += product.getQuantity();
+        }
+        return count;
+    }
+    // Method to update total amount and item count
+    private void updateTotals() {
+        double totalAmount = calculateTotalAmount(); // Calculate the total amount
+        TextView totalTextView = findViewById(R.id.Text_Subtotal);
+        totalTextView.setText(String.format("Total: $%.2f", totalAmount));
+
+        // Calculate and display item count
+        int itemCount = calculateItemCount();
+        TextView itemCountTextView = findViewById(R.id.Text_ItemCount);
+        itemCountTextView.setText(String.format("Item Count: %d", itemCount));
+    }
+    // Method to recalculate and update the total and subtotal when an item is deleted
+    public void updateTotalsAfterItemDeleted() {
+        // Update the productList with the latest cart items
+        productList.clear();
+        productList.addAll(userModel.getCart());
+
+        // Update the total and subtotal TextViews
+        updateTotals();
     }
 }
