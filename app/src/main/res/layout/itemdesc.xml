@@ -5,6 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:id="@+id/BackgroundBox_ItemInfo"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:background="#B8B8B8"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/BackgroundBox_AddItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <View
+        android:id="@+id/BackgroundBox_AddItem"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/primary"
+        app:layout_constraintTop_toBottomOf="@id/BackgroundBox_ItemInfo"
+        app:layout_constraintBottom_toTopOf="@id/BackgroundBox_BottomBar"
+        app:layout_constraintEnd_toEndOf="@id/BackgroundBox_ItemInfo"
+        app:layout_constraintStart_toStartOf="@id/BackgroundBox_ItemInfo" />
+
+
+    <View
+        android:id="@+id/BackgroundBox_BottomBar"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="#B8B8B8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Button to navigate back to SearchActivity -->
+    <Button
+        android:id="@+id/backToSearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back to Search"
+        app:layout_constraintBottom_toBottomOf="@id/BackgroundBox_BottomBar"
+        app:layout_constraintStart_toStartOf="@id/BackgroundBox_BottomBar"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/goToCartButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Cart"
+        app:layout_constraintBottom_toBottomOf="@id/BackgroundBox_BottomBar"
+        app:layout_constraintEnd_toEndOf="@id/BackgroundBox_BottomBar"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
+
     <TextView
         android:id="@+id/product"
         android:layout_width="wrap_content"
@@ -46,43 +99,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/price" />
 
+
     <Button
         android:id="@+id/subB"
         android:layout_width="48dp"
         android:layout_height="39dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="160dp"
         android:text="-"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintStart_toStartOf="@id/BackgroundBox_AddItem"
+        app:layout_constraintTop_toTopOf="@id/BackgroundBox_AddItem"
+        app:layout_constraintBottom_toBottomOf="@id/BackgroundBox_AddItem"
+        android:layout_marginStart="16dp"/>
 
     <TextView
         android:id="@+id/quantity"
         android:layout_width="56dp"
         android:layout_height="39dp"
-        android:layout_marginStart="8dp"
         android:text="0"
-        app:layout_constraintStart_toEndOf="@+id/subB"
-        app:layout_constraintTop_toTopOf="@+id/subB" />
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/subB"
+        app:layout_constraintTop_toTopOf="@id/subB"
+        app:layout_constraintBottom_toBottomOf="@id/subB"
+        android:layout_marginStart="8dp"/>
+
 
     <Button
         android:id="@+id/addB"
         android:layout_width="48dp"
         android:layout_height="39dp"
-        android:layout_marginStart="8dp"
         android:text="+"
-        app:layout_constraintStart_toEndOf="@+id/quantity"
-        app:layout_constraintTop_toTopOf="@+id/quantity" />
+        app:layout_constraintStart_toEndOf="@id/quantity"
+        app:layout_constraintTop_toTopOf="@id/quantity"
+        app:layout_constraintBottom_toBottomOf="@id/quantity"
+        android:layout_marginStart="8dp"/>
 
     <Button
         android:id="@+id/cartB"
         android:layout_width="140dp"
         android:layout_height="65dp"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="52dp"
         android:text="ADD TO CART"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quantity" />
+        app:layout_constraintEnd_toEndOf="@id/BackgroundBox_AddItem"
+        app:layout_constraintBottom_toTopOf="@id/addB"
+        app:layout_constraintTop_toBottomOf="@id/subB"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

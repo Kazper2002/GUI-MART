@@ -1,48 +1,64 @@
 package com.example.activiesandviews;
+
+import android.content.Intent;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import androidx.activity.ComponentActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.ComponentActivity;
 import com.squareup.picasso.Picasso;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class productActivity  extends ComponentActivity{
-    private Button subB, addB;
+public class productActivity extends ComponentActivity {
+    private Button subB, addB, backToSearchButton, goToCartButton, addToCartButton;
     public ImageView pImage;
-    public TextView quantity, product, price, desc;
-    public int count =0;
-    private List<Map<String, String>> products = new ArrayList<>();
+    public TextView quantity, name, price, desc;
+    public int count = 0;
+    private List<FullProduct> products = new ArrayList<>();
+    private UserModel userModel;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.itemdesc);
 
-        product = findViewById(R.id.product);
+        String itemName = getIntent().getStringExtra("itemName").trim();
+
+        Log.d("ProductActivity", "Item sent over name: " + itemName);
+
+        name = findViewById(R.id.product);
         pImage = findViewById(R.id.pImage);
         price = findViewById(R.id.price);
         subB = findViewById(R.id.subB);
         addB = findViewById(R.id.addB);
         quantity = findViewById(R.id.quantity);
         desc = findViewById(R.id.description);
+        backToSearchButton = findViewById(R.id.backToSearchButton);
+        goToCartButton = findViewById(R.id.goToCartButton);
+        addToCartButton = findViewById(R.id.cartB);
 
-        readFile();
+        userModel = new UserModel(this);
+
+        products = readProductsFromCSV();
         setupButtons();
-        updateUI(0);
+        updateUI(itemName);
     }
 
-    private void setupButtons(){
+    private void setupButtons() {
         subB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 if (count > 0) {
                     count--;
                     updateQuantity();
@@ -51,47 +67,83 @@ public class productActivity  extends ComponentActivity{
         });
         addB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 count++;
                 updateQuantity();
             }
         });
+
+        backToSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(productActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        goToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(productActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+        addToCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int quantityToAdd = Integer.parseInt(quantity.getText().toString());
+                String itemName = name.getText().toString();
+                double itemPrice = Double.parseDouble(price.getText().toString());
+                userModel.addToCart(itemName, itemPrice, quantityToAdd);
+
+                // Show a Toast message indicating the number of items added to the cart
+                String toastMessage = "Quantity of " + quantityToAdd + " " + itemName + " has been added to cart";
+                Toast.makeText(productActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
-    private void updateQuantity(){
+
+    private void updateQuantity() {
         quantity.setText(String.valueOf(count));
     }
-    public void readFile(){
-        //needs to be tested
 
+    private List<FullProduct> readProductsFromCSV() {
+        List<FullProduct> productList = new ArrayList<>();
         try {
-            InputStream is = getAssets().open("productData.csv");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            AssetManager assetManager = getAssets();
+            InputStream inputStream = assetManager.open("productData.csv");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
-            reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                Map<String, String> productMap = new HashMap<>();
-                productMap.put("Product", parts[0]);
-                productMap.put("Description", parts[1]);
-                productMap.put("Image", parts[2]);
-                productMap.put("Category", parts[3]);
-                productMap.put("Price", parts[4]);
-                products.add(productMap);
+                if (parts.length >= 5) { // Ensure all required fields are present
+                    FullProduct product = new FullProduct(parts[0], parts[1], parts[2], parts[3], Double.parseDouble(parts[4]));
+                    productList.add(product);
+                }
             }
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return productList;
     }
 
-    private void updateUI(int productIndex){
-        if (productIndex < products.size()) {
-            Map<String, String> productDetails = products.get(productIndex);
-            product.setText(productDetails.get("Product"));
-            price.setText(productDetails.get("Price"));
-            desc.setText(productDetails.get("Description"));
-            String imageUrl = productDetails.get("Image");
-            Picasso.get().load(imageUrl).into(pImage);
+
+    private void updateUI(String itemName) {
+        for (FullProduct product : products) {
+            if (product.getName().equals(itemName)) {
+                // Update the views with product details
+                name.setText(itemName);
+                price.setText(String.valueOf(product.getPrice()));
+                desc.setText(product.getDescription());
+
+                // Load image from the drawable folder using Picasso
+                int imageResource = getResources().getIdentifier(product.getImage(), "drawable", getPackageName());
+                Picasso.get().load(imageResource).into(pImage);
+                break; // Exit the loop once the product is found
+            }
         }
     }
+
 }

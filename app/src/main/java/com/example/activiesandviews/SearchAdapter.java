@@ -1,6 +1,7 @@
 package com.example.activiesandviews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -93,6 +94,13 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             userModel.addToCart(item.getName(),item.getPrice(),1);
             Toast.makeText(context, "Item added to cart",Toast.LENGTH_SHORT).show();
         });
+        //add click listener for item description needs to go to item description view while passing the item name
+        holder.itemDescriptionButton.setOnClickListener(v -> {
+            // Navigate to item description activity while passing the item name
+            Intent intent = new Intent(context, productActivity.class);
+            intent.putExtra("itemName", item.getName());
+            context.startActivity(intent);
+        });
     }
 
     private void loadImageIntoImageView(String imageName, ImageView imageView) {
@@ -117,6 +125,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         TextView nameTextView, priceTextView;
         ImageView imageView;
         Button addToCartButton;
+        Button itemDescriptionButton;
 
         SearchViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -124,6 +133,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             priceTextView = itemView.findViewById(R.id.priceTextView);
             imageView = itemView.findViewById(R.id.imageView);
             addToCartButton = itemView.findViewById(R.id.addToCartButton);
+            itemDescriptionButton = itemView.findViewById(R.id.itemDescriptionButton);
         }
     }
 

@@ -41,6 +41,10 @@
             android:name=".RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.ActiviesAndViews" />
+        <activity
+        android:name=".productActivity"
+        android:exported="false"
+        android:theme="@style/Theme.ActiviesAndViews" />
 
     </application>
 </manifest>
