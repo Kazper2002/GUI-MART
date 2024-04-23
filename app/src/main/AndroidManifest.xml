@@ -15,7 +15,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.ActiviesAndViews">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,22 +24,23 @@
         <activity
         android:name=".ProfileActivity"
         android:exported="false"
-        android:label="profile_activity"
         android:theme="@style/Theme.ActiviesAndViews" />
         <activity
         android:name=".CartActivity"
         android:exported="false"
-        android:label="cart_activity"
         android:theme="@style/Theme.ActiviesAndViews" />
         <activity
             android:name=".SearchActivity"
             android:exported="false"
-            android:label="product_activity"
             android:theme="@style/Theme.ActiviesAndViews" />
         <activity
         android:name=".CheckoutActivity"
         android:exported="false"
-        android:label="checkout_activity"
         android:theme="@style/Theme.ActiviesAndViews" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ActiviesAndViews" />
+
     </application>
 </manifest>

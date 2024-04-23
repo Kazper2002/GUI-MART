@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -14,10 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
+    private TextView welcomeTextView;
 
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
     private List<Item> itemList;
+    private UserModel userModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,26 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        // Initialize Logout Button and set listener
+        Button LogOutButton = findViewById(R.id.logout_button);
+        LogOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the CartActivity when the cart button is clicked
+                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        //get access to user information
+        userModel = new UserModel(this);
+
+        /**
+         * Set up welcome text
+         */
+        welcomeTextView = findViewById(R.id.welcomeTextView);
+        String usersName = userModel.getName();
+        welcomeTextView.setText("Welcome, " + usersName + "!");
+
     }
 
     private void setupSearchView() {
