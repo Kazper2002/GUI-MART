@@ -65,7 +65,7 @@ public class SearchActivity extends AppCompatActivity {
          */
         welcomeTextView = findViewById(R.id.welcomeTextView);
         String usersName = userModel.getName();
-        welcomeTextView.setText("Welcome, " + usersName + "!");
+        //welcomeTextView.setText("Welcome, " + usersName + "!");
 
     }
 
