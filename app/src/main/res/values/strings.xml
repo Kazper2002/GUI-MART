@@ -9,4 +9,6 @@
     <string name="Button_ProceedCheckout_Text">Proceed to Checkout</string>
     <string name="ImageButton_Trash_SpeakableText">Remove Item from Cart</string>
     <string name="TextView_SearchTitle">Search</string>
+    <string name="logout_button_string">Log Out</string>
+    <string name="cart_button_string">Cart</string>
 </resources>
