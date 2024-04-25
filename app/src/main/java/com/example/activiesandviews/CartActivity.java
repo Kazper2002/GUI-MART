@@ -12,19 +12,17 @@ import java.util.*;
 public class CartActivity extends ComponentActivity {
 
     private ArrayList<Product> productList;
-    private CartAdapter adapter;
-    private UserModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart);
-        userModel = new UserModel(this);
+        UserModel userModel = new UserModel(this);
         productList = new ArrayList<>();
         productList.addAll(userModel.getCart()); // Load from UserModel
         setupButtons();
         ListView cartListView = findViewById(R.id.ListView_Cart);
-        adapter = new CartAdapter(this, productList);
+        CartAdapter adapter = new CartAdapter(this, productList);
         cartListView.setAdapter(adapter);
         Log.d("CartActivity", "Cart loaded with " + productList.size() + " items.");
     }
@@ -33,17 +31,11 @@ public class CartActivity extends ComponentActivity {
         Button button = findViewById(R.id.Btn_ProceedCheckout);
 
         ImageButton backButton = findViewById(R.id.imageButton_Cart_BackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intent = new Intent(CartActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
-        });
+        backButton.setOnClickListener(v -> onBackPressed());
 
         button.setOnClickListener(view -> {
             if (!productList.isEmpty()) {
-                Toast.makeText(CartActivity.this, "Proceed to checkout", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CartActivity.this, "Proceed to checkout", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(CartActivity.this, CheckoutActivity.class);
                 startActivity(intent);
             } else {

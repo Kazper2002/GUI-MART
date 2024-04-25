@@ -46,12 +46,7 @@ public class CheckoutActivity extends ComponentActivity {
         Button button = findViewById(R.id.Btn_ProceedCheckout);
 
         ImageButton backButton = findViewById(R.id.imageButton_Cart_BackButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(CheckoutActivity.this, CartActivity.class);
-                startActivity(intent);
-            }
-        });
+        backButton.setOnClickListener(v -> onBackPressed());
 
         button.setOnClickListener(view -> {
             if (!productList.isEmpty()) {
