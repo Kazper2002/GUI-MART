@@ -22,7 +22,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PushbackReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,8 +86,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
         Item item = itemsFiltered.get(position);
         holder.nameTextView.setText(item.getName());
-        holder.priceTextView.setText(String.valueOf(item.getPrice()));
+        holder.priceTextView.setText("$" + String.valueOf(item.getPrice()));
         loadImageIntoImageView(item.getImageName(), holder.imageView);
+
+
+
+
         // add click listener for add to cart button
         holder.addToCartButton.setOnClickListener(v ->{
             userModel.addToCart(item.getName(),item.getPrice(),1);
