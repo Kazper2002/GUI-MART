@@ -1,5 +1,6 @@
 package com.example.activiesandviews;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
-    private TextView welcomeTextView;
+
 
     private RecyclerView recyclerView;
     private SearchAdapter adapter;
@@ -23,6 +24,7 @@ public class SearchActivity extends AppCompatActivity {
     private UserModel userModel;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,9 +65,9 @@ public class SearchActivity extends AppCompatActivity {
         /**
          * Set up welcome text
          */
-        welcomeTextView = findViewById(R.id.welcomeTextView);
+        SearchView searchBar = findViewById(R.id.search_view);
         String usersName = userModel.getName();
-        //welcomeTextView.setText("Welcome, " + usersName + "!");
+        searchBar.setQueryHint("Hi " + usersName + ", start your search here!");
 
     }
 
