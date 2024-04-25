@@ -44,10 +44,10 @@
         app:layout_constraintBottom_toTopOf="@+id/BackgroundBox_Subtotal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BackgroundBox_CartTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/BackgroundBox_SearchTitle" />
 
     <View
-        android:id="@+id/BackgroundBox_CartTitle"
+        android:id="@+id/BackgroundBox_SearchTitle"
         android:layout_width="0dp"
         android:layout_height="107dp"
         android:background="#B8B8B8"
@@ -62,10 +62,10 @@
         android:layout_height="wrap_content"
         android:text="Checkout"
         android:textSize="48sp"
-        app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_CartTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_SearchTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_CartTitle"
-        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_CartTitle" />
+        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_SearchTitle"
+        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_SearchTitle" />
 
     <View
         android:id="@+id/BackgroundBox_Subtotal"
@@ -116,8 +116,8 @@
         app:layout_constraintBottom_toTopOf="@+id/ListView_Cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_CartTitle"
-        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_CartTitle"
+        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_SearchTitle"
+        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_SearchTitle"
         app:layout_constraintVertical_bias="0.525"
         app:tint="#4E4E4E"
         tools:visibility="visible" />

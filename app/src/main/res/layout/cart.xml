@@ -13,7 +13,7 @@
 
     <Button
         android:id="@+id/Btn_ProceedCheckout"
-        android:layout_width="448dp"
+        android:layout_width="0dp"
         android:layout_height="111dp"
         android:text="@string/Button_ProceedCheckout_Text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,8 +22,9 @@
 
     <ListView
         android:id="@+id/ListView_Cart"
-        android:layout_width="442dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_ProceedCheckout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BackgroundBox_CartTitle" />
