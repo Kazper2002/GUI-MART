@@ -8,6 +8,7 @@
 
     <View
         android:id="@+id/BackgroundBox_SearchTitle"
+        android:focusable="true"
         android:layout_width="0dp"
         android:layout_height="107dp"
         android:background="#B8B8B8"
