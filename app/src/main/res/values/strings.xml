@@ -8,4 +8,5 @@
     <string name="ViewTitle_Cart" />
     <string name="Button_ProceedCheckout_Text">Proceed to Checkout</string>
     <string name="ImageButton_Trash_SpeakableText">Remove Item from Cart</string>
+    <string name="TextView_SearchTitle">Search</string>
 </resources>

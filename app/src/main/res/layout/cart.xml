@@ -13,29 +13,17 @@
 
     <Button
         android:id="@+id/Btn_ProceedCheckout"
-        android:layout_width="187dp"
-        android:layout_height="54dp"
+        android:layout_width="448dp"
+        android:layout_height="111dp"
         android:text="@string/Button_ProceedCheckout_Text"
-        app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_NavBar"
-        app:layout_constraintEnd_toEndOf="@+id/BackgroundBox_NavBar"
-        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_NavBar"
-        app:layout_constraintTop_toTopOf="@+id/BackgroundBox_NavBar" />
-
-    <View
-        android:id="@+id/BackgroundBox_NavBar"
-        android:layout_width="0dp"
-        android:layout_height="74dp"
-        android:background="#B8B8B8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
         android:id="@+id/ListView_Cart"
-        android:layout_width="0dp"
+        android:layout_width="442dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/BackgroundBox_NavBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BackgroundBox_CartTitle" />
@@ -47,13 +35,15 @@
         android:background="#B8B8B8"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Text_CartTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
         android:text="Cart"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_CartTitle"
@@ -71,11 +61,10 @@
         android:src="@drawable/back_arrow"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/ListView_Cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="@+id/BackgroundBox_CartTitle"
+        app:layout_constraintEnd_toEndOf="@+id/BackgroundBox_CartTitle"
+        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/BackgroundBox_CartTitle"
-        app:layout_constraintVertical_bias="0.525"
         app:tint="#4E4E4E"
         tools:visibility="visible" />
 

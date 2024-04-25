@@ -19,8 +19,9 @@
 
     <TextView
         android:id="@+id/welcomeTextView"
-        android:layout_width="158dp"
-        android:layout_height="78dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
         android:text="@string/TextView_SearchTitle"
         android:textAlignment="center"
         android:textSize="48sp"
@@ -66,12 +67,11 @@
 
     <Button
         android:id="@+id/cart_button"
-        android:layout_width="448dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
         android:text="Cart"
         app:layout_constraintBottom_toTopOf="@+id/logout_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 
