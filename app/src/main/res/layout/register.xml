@@ -6,12 +6,12 @@
     android:gravity="center"
     >
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="259dp"
         android:layout_height="200dp"
         android:src="@drawable/utsa_png" />
-
 
     <EditText
         android:id="@+id/register_name"
