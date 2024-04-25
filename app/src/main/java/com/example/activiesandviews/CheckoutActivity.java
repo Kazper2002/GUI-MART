@@ -2,7 +2,6 @@ package com.example.activiesandviews;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.*;
 import androidx.activity.ComponentActivity;
 import java.util.*;
@@ -12,7 +11,6 @@ import java.util.*;
 public class CheckoutActivity extends ComponentActivity {
 
     private ArrayList<Product> productList;
-    private CartAdapter adapter;
     private UserModel userModel;
 
     @Override
@@ -24,7 +22,7 @@ public class CheckoutActivity extends ComponentActivity {
         productList.addAll(userModel.getCart()); // Load from UserModel
         setupButtons();
         ListView cartListView = findViewById(R.id.ListView_Cart);
-        adapter = new CartAdapter(this, productList);
+        CartAdapter adapter = new CartAdapter(this, productList);
         cartListView.setAdapter(adapter);
         updateTotals();
 
