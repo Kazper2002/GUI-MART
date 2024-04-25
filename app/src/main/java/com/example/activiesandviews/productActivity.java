@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,13 +74,9 @@ public class productActivity extends ComponentActivity {
             }
         });
 
-        backToSearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(productActivity.this, SearchActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        // Android Back Button to return to cart
+        backToSearchButton.setOnClickListener(v -> onBackPressed());
 
         goToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
