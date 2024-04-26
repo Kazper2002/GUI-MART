@@ -1,5 +1,6 @@
 package com.example.activiesandviews;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
@@ -127,12 +128,13 @@ public class productActivity extends ComponentActivity {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private void updateUI(String itemName) {
         for (FullProduct product : products) {
             if (product.getName().equals(itemName)) {
                 // Update the views with product details
                 name.setText(itemName);
-                price.setText(String.valueOf(product.getPrice()));
+                price.setText("$" + String.valueOf(product.getPrice()));
                 desc.setText(product.getDescription());
 
                 // Load image from the drawable folder using Picasso
