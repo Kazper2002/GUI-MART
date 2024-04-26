@@ -16,7 +16,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center_vertical"
         android:contentDescription="Image of the product"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/placeholder" />
 
     <LinearLayout
