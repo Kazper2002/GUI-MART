@@ -91,7 +91,7 @@ public class productActivity extends ComponentActivity {
             public void onClick(View v) {
                 int quantityToAdd = Integer.parseInt(quantity.getText().toString());
                 String itemName = name.getText().toString();
-                double itemPrice = Double.parseDouble(price.getText().toString());
+                double itemPrice = Double.parseDouble(price.getText().toString().replace("$", ""));
                 userModel.addToCart(itemName, itemPrice, quantityToAdd);
 
                 // Show a Toast message indicating the number of items added to the cart
