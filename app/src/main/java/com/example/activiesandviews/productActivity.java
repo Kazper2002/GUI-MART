@@ -92,11 +92,15 @@ public class productActivity extends ComponentActivity {
                 int quantityToAdd = Integer.parseInt(quantity.getText().toString());
                 String itemName = name.getText().toString();
                 double itemPrice = Double.parseDouble(price.getText().toString().replace("$", ""));
-                userModel.addToCart(itemName, itemPrice, quantityToAdd);
-
-                // Show a Toast message indicating the number of items added to the cart
-                String toastMessage = "Quantity of " + quantityToAdd + " " + itemName + " has been added to cart";
-                Toast.makeText(productActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
+                if (quantityToAdd > 0) {
+                    userModel.addToCart(itemName, itemPrice, quantityToAdd);
+                    // Show a Toast message indicating the number of items added to the cart
+                    String toastMessage = "Quantity of " + quantityToAdd + " " + itemName + " has been added to cart";
+                    Toast.makeText(productActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
+                }else{
+                    String toastError = "Cannot add a quantity of 0";
+                    Toast.makeText(productActivity.this,toastError,Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
