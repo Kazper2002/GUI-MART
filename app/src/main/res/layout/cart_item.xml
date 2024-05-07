@@ -16,6 +16,7 @@
         android:layout_width="197dp"
         android:layout_height="33dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="Product Name"
         android:text=" "
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +29,7 @@
         android:layout_width="55dp"
         android:layout_height="30dp"
         android:layout_marginEnd="12dp"
+        android:contentDescription="Product Price"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageButton_Trash"
@@ -52,6 +54,7 @@
         android:id="@+id/productQuantity"
         android:layout_width="55dp"
         android:layout_height="30dp"
+        android:contentDescription="Product Quantity"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/productPrice"
@@ -63,13 +66,14 @@
         android:id="@+id/imageView3"
         android:layout_width="121dp"
         android:layout_height="119dp"
+        android:contentDescription="Product Image"
+        android:src="@drawable/placeholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:src="@drawable/placeholder" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

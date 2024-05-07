@@ -16,10 +16,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/Btn_ProceedCheckout"
         android:layout_width="187dp"
         android:layout_height="54dp"
+        android:contentDescription="Purchase Button"
         android:text="Purchase"
         app:layout_constraintBottom_toBottomOf="@+id/BackgroundBox_NavBar"
         app:layout_constraintEnd_toEndOf="@+id/BackgroundBox_NavBar"

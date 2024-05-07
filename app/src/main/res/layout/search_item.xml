@@ -62,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/button_roundedcorners_searchitem"
+                android:contentDescription="Item Description Button"
                 android:padding="10dp"
                 android:text="Item Description" />
 
@@ -70,6 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_roundedcorners_searchitem"
+                android:contentDescription="Add to Cart Button"
                 android:padding="10dp"
                 android:text="Add to Cart" />
         </LinearLayout>

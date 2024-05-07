@@ -26,6 +26,7 @@
         android:layout_width="289dp"
         android:layout_height="45dp"
         android:layout_marginBottom="22dp"
+        android:contentDescription="Username Field"
         android:ems="10"
         android:inputType="text"
         android:textSize="20sp"
@@ -52,6 +53,7 @@
         android:layout_width="289dp"
         android:layout_height="45dp"
         android:layout_marginBottom="22dp"
+        android:contentDescription="Password Field"
         android:ems="10"
         android:inputType="text"
         android:textSize="20sp"
@@ -66,12 +68,12 @@
         android:layout_height="41dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="119dp"
+        android:contentDescription="Login Button"
         android:text="LOGIN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -87,11 +89,12 @@
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="Account Registration Button"
         android:text="Don't have an account? Register here"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword"/>
+        app:layout_constraintTop_toBottomOf="@+id/inputPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

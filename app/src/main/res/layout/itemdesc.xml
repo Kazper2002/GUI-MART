@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:contentDescription="Decrease Quantity Button">
 
 
     <TextView
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginBottom="24dp"
+        android:contentDescription="Back to Search Button"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:text="Back to Search"
@@ -64,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="24dp"
+        android:contentDescription="Go to Cart Button"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:text="Go to Cart"
@@ -117,6 +120,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="9dp"
+        android:contentDescription="Curent Quantity"
         android:gravity="center"
         android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/cartB"
@@ -130,6 +134,7 @@
         android:layout_width="48dp"
         android:layout_height="39dp"
         android:layout_marginStart="32dp"
+        android:contentDescription="Increase Quantity"
         android:scaleX="1.5"
         android:scaleY="1.5"
         android:text="+"
@@ -141,6 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:contentDescription="Add to Cart Button"
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:text="ADD TO CART"
