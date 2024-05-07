@@ -53,6 +53,7 @@ public class productActivity extends ComponentActivity {
         userModel = new UserModel(this);
 
         products = readProductsFromCSV();
+        quantity.setText("1");
         setupButtons();
         updateUI(itemName);
     }
@@ -61,7 +62,7 @@ public class productActivity extends ComponentActivity {
         subB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (count > 0) {
+                if (count > 1) {
                     count--;
                     updateQuantity();
                 }
